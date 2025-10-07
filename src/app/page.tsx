@@ -85,8 +85,6 @@ export default async function Home() {
         </div>
         <div>
           <a href="">Portafolio</a>
-          <a href="">Analisis</a>
-          <a href="">Historial</a>
         </div>
       </nav>
 

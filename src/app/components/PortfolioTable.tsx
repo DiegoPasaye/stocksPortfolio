@@ -81,39 +81,41 @@ export default function PortfolioTable({ initialData }: { initialData: StockData
 
   // EL JSX QUE SE RENDERIZA
   return (
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          <th>Activo</th>
-          <th>Precio actual</th>
-          {/* 1. AÑADIMOS LA NUEVA CABECERA */}
-          <th>Precio de Entrada</th>
-          <th>Variación del día (%)</th>
-          <th>PNL Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        {portfolio.map((stock) => {
-          const pnlTotal = stock.entryPrice > 0 
-            ? ((stock.currentPrice - stock.entryPrice) / stock.entryPrice) * 100 
-            : 0;
-          const pnlColor = pnlTotal >= 0 ? 'green' : 'red';
-          const dayChangeColor = stock.dayChange >= 0 ? 'green' : 'red';
+    <div className={styles.tableContainer}>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th>Activo</th>
+            <th>Precio actual</th>
+            {/* 1. AÑADIMOS LA NUEVA CABECERA */}
+            <th>Precio de Entrada</th>
+            <th>Variación del día (%)</th>
+            <th>PNL Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {portfolio.map((stock) => {
+            const pnlTotal = stock.entryPrice > 0 
+              ? ((stock.currentPrice - stock.entryPrice) / stock.entryPrice) * 100 
+              : 0;
+            const pnlColor = pnlTotal >= 0 ? 'green' : 'red';
+            const dayChangeColor = stock.dayChange >= 0 ? 'green' : 'red';
 
-          return (
-            <tr key={stock.symbol}>
-              <td>{stock.symbol}</td>
-              <td>${stock.currentPrice?.toFixed(2) ?? '0.00'}</td>
-              <td>${stock.entryPrice.toFixed(2)}</td>
-              <td style={{ color: dayChangeColor }}>{stock.percentChange?.toFixed(2) ?? '0.00'}%</td>
-              <td style={{ color: pnlColor }}>
-                <Image className={styles.tableIcon} src='/earnings.svg' alt="earnings icon" width={20} height={20}/>
-                {pnlTotal.toFixed(2)}%
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+            return (
+              <tr key={stock.symbol}>
+                <td>{stock.symbol}</td>
+                <td>${stock.currentPrice?.toFixed(2) ?? '0.00'}</td>
+                <td>${stock.entryPrice.toFixed(2)}</td>
+                <td style={{ color: dayChangeColor }}>{stock.percentChange?.toFixed(2) ?? '0.00'}%</td>
+                <td style={{ color: pnlColor }}>
+                  <Image className={styles.tableIcon} src='/earnings.svg' alt="earnings icon" width={20} height={20}/>
+                  {pnlTotal.toFixed(2)}%
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 }
