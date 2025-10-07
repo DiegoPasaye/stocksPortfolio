@@ -25,9 +25,6 @@ interface FinnhubQuoteResponse {
   o: number;
   pc: number;
 }
-
-// 2. FUNCIÓN HELPER PARA LLAMAR A LA API
-// ✅ CORREGIDO: Usamos la nueva interfaz en lugar de 'any'
 async function getStockQuote(symbol: string): Promise<FinnhubQuoteResponse | null> {
   const API_KEY = process.env.NEXT_PUBLIC_FINNHUB_API_KEY; 
   const url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${API_KEY}`;
@@ -38,14 +35,13 @@ async function getStockQuote(symbol: string): Promise<FinnhubQuoteResponse | nul
       console.error(`Error fetching data for ${symbol}: ${response.statusText}`);
       return null;
     }
-    // Le decimos a TypeScript que el JSON tendrá la forma de nuestra interfaz
-    return response.json() as Promise<FinnhubQuoteResponse>;
+    const data: FinnhubQuoteResponse = await response.json();
+    return data;
   } catch (error) {
     console.error(`Network error or other issue fetching ${symbol}:`, error);
     return null;
   }
 }
-
 // 3. EL COMPONENTE PRINCIPAL
 export default function PortfolioTable({ initialData }: { initialData: StockData[] }) {
   const [portfolio, setPortfolio] = useState(initialData);
