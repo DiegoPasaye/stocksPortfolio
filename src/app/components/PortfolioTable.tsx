@@ -13,9 +13,10 @@ interface StockData {
   dayChange: number;
   percentChange: number;
   entryPrice: number;
+  quantity: number; // Asegurémonos de que quantity esté aquí también
 }
 
-// ✅ NUEVO: Interfaz específica para la respuesta de la API
+// Interfaz para la respuesta de la API
 interface FinnhubQuoteResponse {
   c: number;
   d: number;
@@ -25,6 +26,8 @@ interface FinnhubQuoteResponse {
   o: number;
   pc: number;
 }
+
+// Función para llamar a la API
 async function getStockQuote(symbol: string): Promise<FinnhubQuoteResponse | null> {
   const API_KEY = process.env.NEXT_PUBLIC_FINNHUB_API_KEY; 
   const url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${API_KEY}`;
@@ -35,14 +38,14 @@ async function getStockQuote(symbol: string): Promise<FinnhubQuoteResponse | nul
       console.error(`Error fetching data for ${symbol}: ${response.statusText}`);
       return null;
     }
-    const data: FinnhubQuoteResponse = await response.json();
-    return data;
+    return response.json() as Promise<FinnhubQuoteResponse>;
   } catch (error) {
     console.error(`Network error or other issue fetching ${symbol}:`, error);
     return null;
   }
 }
-// 3. EL COMPONENTE PRINCIPAL
+
+// EL COMPONENTE PRINCIPAL
 export default function PortfolioTable({ initialData }: { initialData: StockData[] }) {
   const [portfolio, setPortfolio] = useState(initialData);
 
@@ -76,13 +79,15 @@ export default function PortfolioTable({ initialData }: { initialData: StockData
     return () => clearInterval(intervalId);
   }, [portfolio]);
 
-  // 4. EL JSX QUE SE RENDERIZA
+  // EL JSX QUE SE RENDERIZA
   return (
     <table className={styles.table}>
       <thead>
         <tr>
           <th>Activo</th>
           <th>Precio actual</th>
+          {/* 1. AÑADIMOS LA NUEVA CABECERA */}
+          <th>Precio de Entrada</th>
           <th>Variación del día (%)</th>
           <th>PNL Total</th>
         </tr>
@@ -98,8 +103,9 @@ export default function PortfolioTable({ initialData }: { initialData: StockData
           return (
             <tr key={stock.symbol}>
               <td>{stock.symbol}</td>
-              <td>${stock.currentPrice.toFixed(2)}</td>
-              <td style={{ color: dayChangeColor }}>{stock.percentChange.toFixed(2)}%</td>
+              <td>${stock.currentPrice?.toFixed(2) ?? '0.00'}</td>
+              <td>${stock.entryPrice.toFixed(2)}</td>
+              <td style={{ color: dayChangeColor }}>{stock.percentChange?.toFixed(2) ?? '0.00'}%</td>
               <td style={{ color: pnlColor }}>
                 <Image className={styles.tableIcon} src='/earnings.svg' alt="earnings icon" width={20} height={20}/>
                 {pnlTotal.toFixed(2)}%
