@@ -5,6 +5,7 @@
   margin-left: 5%;
   text-align: center;
   border-spacing: 0;
+  padding-bottom: 40px;
 }
 .table tr th{
   background-color: rgba(0, 0, 0, 0.2);

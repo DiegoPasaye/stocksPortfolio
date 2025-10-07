@@ -62,14 +62,19 @@ export default async function Home() {
       };
     })
   );
+  
 
-  // Calculamos los totales para las tarjetas de resumen
-  const initialCost = initialData.reduce((acc, stock) => acc + (stock.entryPrice * stock.quantity), 0);
-  const totalValue = initialData.reduce((acc, stock) => acc + (stock.currentPrice * stock.quantity), 0);
+  const initialCost = initialData.reduce(
+    (acc, stock) => acc + (stock.entryPrice * stock.quantity), 
+    0
+  );
+  const totalValue = initialData.reduce(
+    (acc, stock) => acc + (stock.currentPrice * stock.quantity), 
+    0
+  );
   const unrealizedPNL = totalValue - initialCost;
   const portfolioReturn = initialCost > 0 ? (unrealizedPNL / initialCost) * 100 : 0;
 
-  // Formateamos los valores para mostrarlos
   const formattedTotalValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalValue);
   const formattedPNL = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', signDisplay: 'always' }).format(unrealizedPNL);
   const formattedReturn = `${portfolioReturn.toFixed(2)}%`;
