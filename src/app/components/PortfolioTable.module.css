@@ -1,0 +1,24 @@
+/* TABLE SECTION */
+
+.table{
+  width: 90%;
+  margin-left: 5%;
+  text-align: center;
+  border-spacing: 0;
+}
+.table tr th{
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px 5px;
+}
+.table tr td{
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+}
+.table tr td image{
+  padding: 5px;
+}
+.tableIcon{
+  margin-right: 5px;
+}
