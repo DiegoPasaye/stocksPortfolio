@@ -129,8 +129,9 @@
   .portfolioInfoIndividual h2{
     font-size: 22px;
   }
-    .tableContainer {
+  .tableContainer {
     overflow-x: auto; 
+    margin-bottom: 3%;
   }
 
   .table th, .table td {
