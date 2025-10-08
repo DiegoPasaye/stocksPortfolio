@@ -8,7 +8,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import StocksTable, {type Stock} from "./components/StocksTable";
-import AddStockModal from "./components/AddStockModal";
+import AddStockModal, { type NewStockData } from "./components/AddStockModal"; 
+
 
 export default function AdminPage() {
   const [stocks, setStocks] = useState<Stock[]>([]);
@@ -43,7 +44,7 @@ export default function AdminPage() {
   }, [pathname]);
 
   // La función para guardar el nuevo stock (sin cambios)
-  const handleAddStock = async (newStockData: any) => {
+    const handleAddStock = async (newStockData: NewStockData) => {
     try {
       const response = await fetch('/api/admin/stocksTable', {
         method: 'POST',

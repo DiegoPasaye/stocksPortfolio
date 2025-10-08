@@ -6,7 +6,7 @@ import { useState } from 'react';
 import styles from '../admin.module.css';
 
 // Definimos el tipo para los datos del formulario (sin el 'id')
-type NewStockData = {
+export type NewStockData = {
   ticket: string;
   entryprice: string;
   quantity: string;
