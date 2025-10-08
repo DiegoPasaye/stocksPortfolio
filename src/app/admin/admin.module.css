@@ -1,0 +1,348 @@
+
+html, body, .bodyAdmin{
+      overflow-x: hidden;
+      width: 100%;
+}
+.adminPage{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.bodyAdmin {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+.adminStyles{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.adminStyles h2{
+    font-size: 34px;
+}
+
+
+.adminActions{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 0;
+}
+.adminActions input{
+    background: transparent;
+    padding: 10px;
+    width: 70%;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 1);
+}
+.adminActions button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 9);
+    border-radius: 10px;
+    padding: 10px 15px;
+    width: 15%;
+    justify-content: center;
+    cursor: pointer;
+}
+.adminActions button:hover{
+    background: rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.bodyAdminNav {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; 
+  width: 240px;
+  background-color: white;
+  border-right: 1px solid #e5e7eb;
+  padding: 1rem;
+}
+
+.sidebarLinks {
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sidebarLinks a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #374151;
+    font-weight: 500;
+    font-size: 1.25em;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.sidebarLinks a:hover {
+    background-color: #f3f4f6;
+    color: #000;
+}
+
+.panelAdmin {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: #f9fafb;
+    width: 70%;
+}
+.panelAdmin h3{
+    font-size: 26px;
+    font-weight: 500;
+}
+.panelAdminButtonsOptions{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 50px;
+}
+.panelAdminButtonsOptions div{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.panelAdminButtonsOptions input{
+    width: 100%;
+    padding: 10px 5px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+.panelAdminButtonsOptions button{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.tablaContainer {
+    margin-top: 50px;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tablaContainer h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+
+
+.sidebarHeader {
+  flex-shrink: 0;
+  padding: 1rem;
+}
+
+.sidebarLogout {
+  flex-shrink: 0;
+  padding: 1rem;
+  margin-top: auto;
+  border-top: 1px solid #e5e7eb; /* Línea para separarlo visualmente */
+}
+
+.avatarImg {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* MODAL DE EDITAR */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modalContent h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.formGroupCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.formGroupCheckbox input {
+  width: 20px;
+  height: 20px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.formActions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cancelButton {
+  background-color: #6c757d;
+  color: white;
+}
+
+.saveButton {
+  background-color: #007bff;
+  color: white;
+}
+
+
+/* --- ESTILOS PARA LA NAVEGACIÓN MÓVIL --- */
+
+.navBarAdminMobile {
+    display: none;
+}
+.adminMobileNavOverlay {
+    display: none;
+}
+
+@media (max-width: 900px){
+    .bodyAdminNav {
+        display: none;
+    }
+
+    .navBarAdminMobile {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 30px;
+        z-index: 5000;
+    }
+
+    .hamburgerBtn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    /* CAMBIO: Estilos base del menú overlay (estado oculto) */
+    .adminMobileNavOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff;
+        z-index: 1100;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        /* --- Propiedades para la animación --- */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none; /* Evita clics cuando está oculto */
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+
+    /* CAMBIO: Estilos del menú cuando tiene la clase 'open' (estado visible) */
+    .adminMobileNavOverlay.open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto; /* Permite clics cuando es visible */
+    }
+    
+    .adminMobileNavOverlay .sidebarLinks {
+        margin-top: 2rem;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .adminMobileNavOverlay .sidebarLinks a {
+        font-size: 1.5em;
+    }
+
+    .adminMobileNavOverlay hr {
+        width: 100%;
+    }
+    
+    .navCloseBtnContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 17px;
+    }
+
+    .navCloseBtn {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .tablaContainer{
+        width: 100%;
+    }
+    
+    .panelAdminButtonsOptions{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .panelAdminButtonsOptions input{
+        width: 100%;
+    }
+
+    .panelAdminButtonsOptions div{
+        flex-direction: column;
+        gap: 15px;
+    }
+}
